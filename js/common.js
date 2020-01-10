@@ -2,15 +2,25 @@ $(function(){
 	var welcomSection = $('#intro')
   setTimeout(function(){
   	welcomSection.addClass('content-hidden').fadeOut(1500);
-  },100);
+  },800);
 
 	$('.nav').on("click",function(){
+		var section;
 		if($(this).closest('section').attr('id') == 'profile') {
-			$('#profile').css({'z-index':9998}).fadeOut(1500);
-			$('#works').css({'z-index':9997}).fadeIn(1500);
+			$('div.cover').addClass('switch');
+			setTimeout(function(){
+				$('#profile').hide();
+				$('div.cover').removeClass('profile').addClass('works').removeClass('switch');
+				$('#works').show();
+			},1000);
 		} else {
-			$('#works').css({'z-index':9998}).fadeOut(1500);
-			$('#profile').css({'z-index':9997}).fadeIn(1500);
+			$('div.cover').addClass('switch');
+			setTimeout(function(){
+				$('#works').hide();
+				$('div.cover').removeClass('works').addClass('profile').removeClass('switch');
+				$('#profile').show();
+			},1000);
 		}
+
 	})
 })
